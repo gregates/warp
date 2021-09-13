@@ -21,7 +21,7 @@ async-compression = { version = "0.4.5", features = ["tokio"], optional = true }
 bytes = "1.0"
 futures-util = { version = "0.3", default-features = false, features = ["sink"] }
 futures-channel = { version = "0.3.17", features = ["sink"]}
-headers = "0.3.5"
+headers = { git = "https://github.com/gregates/headers", branch = "sec-websocket-extensions" }
 http = "0.2"
 hyper = { version = "0.14", features = ["stream", "server", "http1", "http2", "tcp", "client"] }
 log = "0.4"
@@ -36,7 +36,7 @@ tokio = { version = "1.0", features = ["fs", "sync", "time"] }
 tokio-util = { version = "0.7.1", features = ["io"] }
 tracing = { version = "0.1.21", default-features = false, features = ["log", "std"] }
 tower-service = "0.3"
-tokio-tungstenite = { version = "0.21", optional = true }
+tungstenite = { git = "https://github.com/gregates/tokio-tungstenite", branch = "permessage-deflate", optional = true }
 percent-encoding = "2.1"
 pin-project = "1.0"
 tokio-rustls = { version = "0.25", optional = true }
@@ -55,7 +55,7 @@ listenfd = "1.0"
 [features]
 default = ["multipart", "websocket"]
 multipart = ["multer"]
-websocket = ["tokio-tungstenite"]
+websocket = ["tungstenite/deflate"]
 tls = ["tokio-rustls", "rustls-pemfile"]
 
 # Enable compression-related filters
